@@ -6,7 +6,6 @@ export default function Education() {
       id="education"
       className="min-h-screen py-20 px-6 bg-gradient-to-br from-black via-gray-900 to-gray-950 flex flex-col items-center justify-center text-white relative"
     >
-      {/* Section Heading */}
       <motion.h2
         className="text-4xl md:text-5xl font-extrabold mb-16 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-pink-500"
         initial={{ opacity: 0, y: -30 }}
@@ -17,11 +16,9 @@ export default function Education() {
         Education
       </motion.h2>
 
-      {/* Background Glow Rings */}
       <div className="absolute w-[450px] h-[450px] bg-yellow-500 opacity-10 blur-3xl rounded-full animate-pulse z-0 top-24 left-1/2 -translate-x-1/2 pointer-events-none" />
       <div className="absolute w-[350px] h-[350px] bg-pink-500 opacity-10 blur-2xl rounded-full animate-pulse z-0 top-60 left-1/4 pointer-events-none" />
 
-      {/* Glass Card with Gradient Border */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}

@@ -63,7 +63,6 @@ export default function Experience() {
               glarePosition="all"
               className="bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] border border-gray-800 rounded-2xl p-8 md:p-10 shadow-2xl relative overflow-hidden"
             >
-              {/* Aurora Glow */}
               <div className="absolute -top-20 -left-20 w-[300px] h-[300px] bg-gradient-to-tr from-yellow-500 to-pink-600 opacity-20 blur-3xl rounded-full z-0 animate-pulse" />
 
               <div className="relative z-10">

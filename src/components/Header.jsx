@@ -28,7 +28,6 @@ export default function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between text-black dark:text-white relative">
-        {/* LOGO */}
         <div
           className="text-2xl font-extrabold tracking-widest hover:text-yellow-400 dark:hover:text-yellow-300 transition cursor-pointer flex items-center gap-2"
           onClick={() => scrollTo("hero")}
@@ -37,7 +36,6 @@ export default function Header() {
           <span className="font-heading">Kushal's Portfolio</span>
         </div>
 
-        {/* NAV LINKS */}
         <nav className="hidden md:flex gap-10 text-sm font-medium">
           {[
             "hero",
@@ -60,7 +58,6 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* BACKGROUND GLOW */}
         <div className="absolute inset-0 blur-xl opacity-20 bg-gradient-to-r from-yellow-500/10 via-pink-500/10 to-indigo-500/10 z-[-1] rounded-full" />
       </div>
     </motion.header>

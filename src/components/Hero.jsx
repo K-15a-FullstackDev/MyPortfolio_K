@@ -12,7 +12,6 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex flex-col justify-center items-center text-white px-6 md:px-20 overflow-hidden bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e]"
     >
-      {/* 🔵 Background Animation */}
       <Particles
         id="tsparticles"
         init={particlesInit}
@@ -35,7 +34,6 @@ export default function Hero() {
         className="absolute top-0 left-0 w-full h-full -z-10"
       />
 
-      {/* 👤 Main Text */}
       <motion.h1
         className="text-5xl md:text-6xl font-extrabold text-center mb-6 tracking-tight bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 bg-clip-text text-transparent animate-gradient-x"
         initial={{ opacity: 0, y: -40 }}
@@ -61,7 +59,6 @@ export default function Hero() {
         . I write clean code that solves real business problems.
       </motion.p>
 
-      {/* 📄 Resume Buttons */}
       <motion.div
         className="mt-10 flex gap-5 flex-wrap justify-center"
         initial={{ opacity: 0 }}

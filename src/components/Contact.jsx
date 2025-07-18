@@ -9,7 +9,7 @@ export default function Contact() {
       id="contact"
       className="relative min-h-screen px-6 py-24 bg-gradient-to-br from-gray-950 via-black to-gray-900 text-white flex flex-col items-center justify-center overflow-hidden"
     >
-      {/* 🌊 Soft animated wave overlay
+      {/*
       <Lottie
         animationData={waveAnimation}
         loop
@@ -17,10 +17,8 @@ export default function Contact() {
         className="absolute inset-0 w-full h-full opacity-10 pointer-events-none z-0"
       /> */}
 
-      {/* 🔆 Background radial glow aura */}
       <div className="absolute w-[500px] h-[500px] bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 rounded-full blur-[120px] opacity-10 animate-pulse z-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
 
-      {/* 🔸 Section Title */}
       <motion.h2
         className="text-4xl md:text-6xl font-extrabold text-yellow-400 text-center mb-6 drop-shadow-md z-10"
         initial={{ opacity: 0, y: -40 }}
@@ -31,7 +29,6 @@ export default function Contact() {
         Let’s Connect
       </motion.h2>
 
-      {/* ✍️ Sub-description */}
       <motion.p
         className="max-w-2xl text-center text-gray-300 text-base md:text-lg leading-relaxed mb-12 z-10"
         initial={{ opacity: 0 }}
@@ -44,7 +41,6 @@ export default function Contact() {
         and real-world dev experience.
       </motion.p>
 
-      {/* 📨 CTA Button */}
       <motion.a
         href="mailto:kushall0100@gmail.com"
         className="group inline-flex items-center gap-3 bg-yellow-400 text-black font-bold px-8 py-4 rounded-full shadow-lg hover:bg-yellow-300 hover:scale-110 hover:shadow-yellow-400 transition-all duration-300 text-lg z-10"
@@ -57,7 +53,6 @@ export default function Contact() {
         <FiSend className="group-hover:translate-x-1 transition-transform duration-300 text-xl" />
       </motion.a>
 
-      {/* 📜 Footer Note */}
       <motion.p
         className="text-sm text-yellow-400 font-semibold mt-16 z-10 text-center"
         initial={{ opacity: 0 }}

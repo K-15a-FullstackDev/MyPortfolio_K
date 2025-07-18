@@ -251,7 +251,6 @@ export default function Skills() {
       id="tools"
       className="min-h-screen px-6 py-20 bg-gradient-to-b from-gray-950 via-black to-gray-900 text-white relative overflow-hidden"
     >
-      {/* 🔆 Soft background glow aura */}
       <div className="absolute w-[500px] h-[500px] bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 blur-[120px] opacity-10 rounded-full z-0 animate-pulse left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
 
       <motion.h2

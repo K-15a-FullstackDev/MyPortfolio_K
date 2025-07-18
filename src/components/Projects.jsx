@@ -8,7 +8,7 @@ const projects = [
     description:
       "Dynamic React app with user cart, login, restaurant menus, and live search. Integrated Swiggy public API with lazy loading and Redux Toolkit.",
     tech: ["React", "Redux Toolkit", "Tailwind CSS", "REST API"],
-    image: "", // Add optional image URL
+    image: "",
     live: "https://food-order-react-kushal.netlify.app/",
     github: "https://github.com/K-15a-FullstackDev/React-Food-App",
   },
@@ -68,7 +68,6 @@ export default function Projects() {
               className="rounded-3xl bg-gradient-to-tr from-yellow-400/10 via-white/10 to-pink-500/10 border border-yellow-400/10 p-1 shadow-2xl hover:shadow-yellow-400/20 overflow-hidden relative"
             >
               <div className="bg-black/80 backdrop-blur-xl rounded-3xl p-6 h-full flex flex-col justify-between">
-                {/* Optional Project Thumbnail */}
                 {proj.image && (
                   <img
                     src={proj.image}
@@ -77,7 +76,6 @@ export default function Projects() {
                   />
                 )}
 
-                {/* Project Details */}
                 <div>
                   <h3 className="text-xl font-bold text-yellow-300 mb-2">
                     {proj.title}
@@ -97,7 +95,6 @@ export default function Projects() {
                   </div>
                 </div>
 
-                {/* CTA Links */}
                 <div className="flex gap-5 pt-4 mt-4 border-t border-gray-800">
                   <a
                     href={proj.live}
@@ -118,10 +115,8 @@ export default function Projects() {
                 </div>
               </div>
 
-              {/* 🔥 Neon Glow Border */}
               <div className="absolute -inset-[1px] bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 animate-pulse blur-2xl opacity-20 rounded-3xl z-[-1]" />
 
-              {/* 💥 Hover Aura Pulse */}
               <div className="absolute inset-0 rounded-3xl z-0 pointer-events-none group-hover:scale-105 transition-transform duration-500">
                 <div className="absolute w-32 h-32 bg-yellow-500 blur-2xl opacity-10 rounded-full -top-10 -left-10 animate-ping" />
                 <div className="absolute w-24 h-24 bg-pink-500 blur-2xl opacity-10 rounded-full -bottom-8 -right-8 animate-ping" />
