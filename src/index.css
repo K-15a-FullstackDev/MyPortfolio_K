@@ -2,16 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Enable smooth scroll globally */
 html {
   scroll-behavior: smooth;
 }
 
-/* Light mode defaults */
+/* Base body style */
 body {
-  @apply bg-white text-black;
+  @apply bg-white text-black overflow-x-hidden;
 }
 
-/* Dark mode override */
-.dark body {
+/* Tailwind dark mode requires class on <html>, not body */
+html.dark body {
   @apply bg-black text-white;
 }

@@ -1,3 +1,4 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   darkMode: "class",
@@ -9,6 +10,8 @@ module.exports = {
       colors: {
         primary: "#facc15", // yellow
         dark: "#0f0f0f",
+        "background-light": "#ffffff",
+        "background-dark": "#0f0f0f",
       },
       animation: {
         fadeUp: "fadeUp 0.6s ease-out",
