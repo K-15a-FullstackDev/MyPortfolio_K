@@ -9,10 +9,5 @@ html {
 
 /* Base body style */
 body {
-  @apply bg-white text-black overflow-x-hidden;
-}
-
-/* Tailwind dark mode requires class on <html>, not body */
-html.dark body {
   @apply bg-black text-white;
 }

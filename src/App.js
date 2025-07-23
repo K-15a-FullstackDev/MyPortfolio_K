@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./components/Header";
-import ThemeToggle from "./components/ThemeToggle";
+
 import Hero from "./components/Hero";
 import Skills from "./components/Skills";
 import Experience from "./components/Experience";
@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="overflow-x-hidden scroll-smooth bg-white dark:bg-black">
       <Header />
-      <ThemeToggle />
+
       <Hero />
       <Skills />
       <Experience />
