@@ -1,65 +1,164 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { FaRocket } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaRocket, FaBars, FaTimes } from "react-icons/fa";
+
+const navigationItems = [
+  { id: "hero", label: "Home" },
+  { id: "tools", label: "Skills" },
+  { id: "experience", label: "Experience" },
+  { id: "education", label: "Education" },
+  { id: "projects", label: "Projects" },
+  { id: "contact", label: "Contact" },
+];
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 10);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 12);
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
-  const scrollTo = (id) => {
+  useEffect(() => {
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, []);
+
+  const scrollToSection = (id) => {
     const section = document.getElementById(id);
-    if (section) section.scrollIntoView({ behavior: "smooth" });
+
+    if (section) {
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+
+    setIsMenuOpen(false);
   };
 
   return (
     <motion.header
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-white/80 dark:bg-black/80 shadow-xl backdrop-blur-lg border-b border-yellow-400/20"
-          : "bg-transparent"
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className={`fixed left-0 top-0 z-50 w-full border-b transition-all duration-300 ${
+        isScrolled || isMenuOpen
+          ? "border-white/10 bg-black/80 shadow-[0_12px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl"
+          : "border-transparent bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between text-black dark:text-white relative">
-        <div
-          className="text-2xl font-extrabold tracking-widest hover:text-yellow-400 dark:hover:text-yellow-300 transition cursor-pointer flex items-center gap-2"
-          onClick={() => scrollTo("hero")}
+      <div className="relative mx-auto flex max-w-7xl items-center justify-between px-5 py-4 text-white sm:px-6 lg:px-8">
+        <button
+          type="button"
+          onClick={() => scrollToSection("hero")}
+          className="group flex items-center gap-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-black"
+          aria-label="Go to the top of the portfolio"
         >
-          <FaRocket className="text-yellow-400 dark:text-yellow-300 animate-pulse" />
-          <span className="font-heading">Kushal's Portfolio</span>
-        </div>
+          <FaRocket
+            className="text-xl text-yellow-400 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
+            aria-hidden="true"
+          />
 
-        <nav className="hidden md:flex gap-10 text-sm font-medium">
-          {[
-            "hero",
-            "tools",
-            "experience",
-            "education",
-            "projects",
-            "contact",
-          ].map((id, idx) => (
+          <span className="font-heading text-lg font-extrabold tracking-wide sm:text-xl">
+            Kushal's
+            <span className="text-yellow-400"> Portfolio</span>
+          </span>
+        </button>
+
+        <nav
+          className="hidden items-center gap-7 md:flex lg:gap-9"
+          aria-label="Primary navigation"
+        >
+          {navigationItems.map((item) => (
             <motion.button
-              key={id}
-              onClick={() => scrollTo(id)}
-              className="relative uppercase tracking-wide transition text-gray-700 dark:text-gray-300 hover:text-yellow-400 dark:hover:text-yellow-300"
-              whileHover={{ scale: 1.08 }}
-              whileTap={{ scale: 0.95 }}
+              key={item.id}
+              type="button"
+              onClick={() => scrollToSection(item.id)}
+              className="group relative rounded-sm py-2 text-sm font-medium uppercase tracking-[0.12em] text-gray-300 transition-colors duration-300 hover:text-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.96 }}
             >
-              <span className="relative z-10">{id}</span>
-              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-yellow-400 dark:bg-yellow-300 transition-all duration-300 group-hover:w-full" />
+              {item.label}
+
+              <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-yellow-400 transition-all duration-300 group-hover:w-full" />
             </motion.button>
           ))}
         </nav>
 
-        <div className="absolute inset-0 blur-xl opacity-20 bg-gradient-to-r from-yellow-500/10 via-pink-500/10 to-indigo-500/10 z-[-1] rounded-full" />
+        <button
+          type="button"
+          onClick={() => setIsMenuOpen((currentValue) => !currentValue)}
+          className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-xl text-white transition duration-300 hover:border-yellow-400/50 hover:bg-yellow-400/10 hover:text-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 md:hidden"
+          aria-label={
+            isMenuOpen ? "Close navigation menu" : "Open navigation menu"
+          }
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-navigation"
+        >
+          {isMenuOpen ? (
+            <FaTimes aria-hidden="true" />
+          ) : (
+            <FaBars aria-hidden="true" />
+          )}
+        </button>
       </div>
+
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.nav
+            id="mobile-navigation"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="overflow-hidden border-t border-white/10 bg-black/95 backdrop-blur-xl md:hidden"
+            aria-label="Mobile navigation"
+          >
+            <div className="mx-auto flex max-w-7xl flex-col px-5 py-4 sm:px-6">
+              {navigationItems.map((item, index) => (
+                <motion.button
+                  key={item.id}
+                  type="button"
+                  onClick={() => scrollToSection(item.id)}
+                  initial={{ opacity: 0, x: -16 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{
+                    duration: 0.25,
+                    delay: index * 0.04,
+                  }}
+                  className="border-b border-white/5 px-2 py-4 text-left text-sm font-semibold uppercase tracking-[0.14em] text-gray-300 transition-colors duration-300 last:border-b-0 hover:text-yellow-400 focus:outline-none focus:text-yellow-400"
+                >
+                  <span className="mr-3 text-xs text-yellow-400/70">
+                    0{index + 1}
+                  </span>
+
+                  {item.label}
+                </motion.button>
+              ))}
+            </div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 }
