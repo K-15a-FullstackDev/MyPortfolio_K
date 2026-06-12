@@ -30,16 +30,10 @@ const contactLinks = [
 
 export default function Contact() {
   const scrollToTop = () => {
-    const hero = document.getElementById("hero");
-
-    ```
-if (hero) {
-  hero.scrollIntoView({
-    behavior: "smooth",
-    block: "start",
-  });
-}
-```;
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   return (
